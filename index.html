@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Well Do You Know Your Favorite Movie?</title>
+  
+  <style>
+    :root{
+      --bg:#C6B0A3; 
+      --ink:8A6956;
+      --panel: #f6efe9;
+      --accent: #3a2f2a;
+      --ok:#1b8f3b;
+      --warn:#b65b00;
+      --bad:#b00020;
+    }
+    body{
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        color: var(--ink);
+        background: var(--bg);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px 0;    
+    }
+    .container {
+        margin: 0;
+        width:min(960px, 92vw);
+        background: var(--panel);
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.15);
+        overflow:hidden;
+    }
+    header{
+      padding: 28px clamp(18px, 5vw, 40px);
+    }
+    .card{
+      background: white;
+      border-radius:16px; 
+      padding:20px; 
+      margin: 30px 40px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    }
+    .hidden{display:none;}
+  </style>
+</head>
+<body>
+  <div class="container" role="application" aria-label="Movie quiz app">
+  	<header>
+      <h1>Hello, Welcome To The Movie/Series Quiz</h1>
+      <p>Test how well you really know your favorite movie.</p>
+    </header>
+    
+    <main>
+      <section id="step-name" class="card">
+          <h2>Please enter your name to start the quiz</h2>
+          <form id="name-form">
+            <label for="playerName">Your name</label>
+            <input id="playerName" name="playerName" type="text" placeholder="e.g., Alex" required />
+            <div class="actions">
+              <button type="submit">Start</button>
+            </div>
+          </form>
+      </section>
+
+      <section id="step-pick" class="card hidden">
+          <h2>Pick a Movie</h2>
+          <button id="movie-btn">Inception</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const nameForm=document.getElementById("name-form");
+    const stepName=document.getElementById("step-name");
+    const stepPick=document.getElementById("step-pick");
+    nameForm.addEventListener("submit",e=>{
+      e.preventDefault();
+      stepName.classList.add("hidden");
+      stepPick.classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
